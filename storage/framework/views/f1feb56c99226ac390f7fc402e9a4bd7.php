@@ -1,0 +1,142 @@
+
+
+<?php $__env->startSection('title', 'Create Event'); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="container-fluid p-0">
+        <div class="row g-0" style="min-height: calc(100vh - 70px);">
+            
+            <div class="col-md-2 bg-white border-end py-4 d-flex flex-column align-items-center position-fixed h-100"
+                style="top: 70px; z-index: 100;">
+
+                
+                <div class="text-center mb-5 mt-3">
+                    <i class="bi bi-person-circle display-1"></i>
+                    <h4 class="fw-bold mt-3">Superadmin</h4>
+                    <a href="<?php echo e(route('superadmin.profile.edit')); ?>" class="text-info text-decoration-none small">Edit
+                        Profile</a>
+                </div>
+
+                
+                <div class="w-100 px-3">
+                    <nav class="nav flex-column gap-1">
+                        <a href="<?php echo e(route('superadmin.dashboard')); ?>" class="nav-link text-dark fs-6">Meet</a>
+                        <a href="<?php echo e(route('superadmin.manage-meet')); ?>" class="nav-link text-dark fs-6">Manage Meet</a>
+                        <a href="<?php echo e(route('superadmin.manage-event')); ?>" class="nav-link text-dark fs-6">Manage Event</a>
+                        <a href="<?php echo e(route('superadmin.manage.regist')); ?>" class="nav-link text-dark fs-6">Manage
+                            Registration</a>
+                        <a href="#" class="nav-link text-dark fs-6 mt-4" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    </nav>
+                </div>
+            </div>
+
+            
+            <div class="col-md-10 offset-md-2 p-5"
+                style="background: linear-gradient(180deg, #EBC0C0 0%, #cc4e4a 100%); min-height: calc(100vh - 70px);">
+
+                <div class="bg-white rounded-4 p-5 shadow-sm mx-auto" style="max-width: 900px;">
+                    <h3 class="fw-bold text-center mb-5">Event</h3>
+
+                    <form action="<?php echo e(route('superadmin.manage-event.store')); ?>" method="POST">
+                        <?php echo csrf_field(); ?>
+                        <div class="row g-4">
+                            
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label text-secondary small">Select Meet</label>
+                                    <select name="meet_id" class="form-select fst-italic text-secondary"
+                                        style="border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;" required>
+                                        <option value="" disabled selected>Select a Meet</option>
+                                        <?php $__currentLoopData = $meets; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $meet): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                            <option value="<?php echo e($meet->id); ?>" <?php echo e(old('meet_id') == $meet->id ? 'selected' : ''); ?>>
+                                                <?php echo e($meet->name); ?>
+
+                                            </option>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-secondary small">Event Name</label>
+                                    <input type="text" name="name" class="form-control fst-italic text-secondary"
+                                        placeholder="Enter event name" value="<?php echo e(old('name')); ?>"
+                                        style="border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-secondary small">Event Code</label>
+                                    <input type="text" name="code" class="form-control fst-italic text-secondary"
+                                        placeholder="Enter event code" value="<?php echo e(old('code')); ?>"
+                                        style="border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-secondary small">Start Time</label>
+                                    <input type="time" name="start_time" class="form-control fst-italic text-secondary"
+                                        value="<?php echo e(old('start_time')); ?>"
+                                        style="border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-secondary small">Registration Fees</label>
+                                    <input type="number" name="fee" class="form-control fst-italic text-secondary"
+                                        placeholder="Enter fee amount" value="<?php echo e(old('fee')); ?>"
+                                        style="border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-secondary small">Event Status</label>
+                                    <select name="status" class="form-select fst-italic text-secondary"
+                                        style="border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;">
+                                        <option disabled <?php echo e(old('status') ? '' : 'selected'); ?>>Select status</option>
+                                        <option value="Upcoming" <?php echo e(old('status') == 'Upcoming' ? 'selected' : ''); ?>>Upcoming</option>
+                                        <option value="Ongoing" <?php echo e(old('status') == 'Ongoing' ? 'selected' : ''); ?>>Ongoing</option>
+                                        <option value="Completed" <?php echo e(old('status') == 'Completed' ? 'selected' : ''); ?>>Completed</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label text-secondary small">Gender</label>
+                                    <select name="gender" class="form-select fst-italic text-secondary"
+                                        style="border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;">
+                                        <option disabled <?php echo e(old('gender') ? '' : 'selected'); ?>>Select gender</option>
+                                        <option value="Male" <?php echo e(old('gender') == 'Male' ? 'selected' : ''); ?>>Male</option>
+                                        <option value="Female" <?php echo e(old('gender') == 'Female' ? 'selected' : ''); ?>>Female</option>
+                                        <option value="Mixed" <?php echo e(old('gender') == 'Mixed' ? 'selected' : ''); ?>>Mixed</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-secondary small">Age Group</label>
+                                    <input type="text" name="age_group" class="form-control fst-italic text-secondary"
+                                        placeholder="e.g. 15-17" value="<?php echo e(old('age_group')); ?>"
+                                        style="border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label text-secondary small">Heat</label>
+                                    <input type="number" name="heat" class="form-control fst-italic text-secondary"
+                                        placeholder="Number of heats" value="<?php echo e(old('heat')); ?>"
+                                        style="border: 1px solid #dee2e6; border-radius: 10px; padding: 10px;">
+                                </div>
+
+                                <div class="mb-3 pt-4">
+                                    <div class="form-check p-3 rounded-3" style="border: 1px solid #dee2e6;">
+                                        <input type="checkbox" name="relay" value="1" class="form-check-input" id="relay" <?php echo e(old('relay') ? 'checked' : ''); ?>>
+                                        <label class="form-check-label text-secondary fw-bold ms-2" for="relay">Relay
+                                            Event</label>
+                                        <div class="form-text small text-muted ms-1">Check this if the event is a relay
+                                            competition.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <button type="submit" class="btn text-white fw-bold px-5 py-2 rounded-3"
+                                style="background-color: #A93333;">Create Event</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH C:\Users\HP\.gemini\antigravity\scratch\BDT-K1-Swiming-System\resources\views/dashboard/superadmin/actions/ManageMeet/create-event-sadm.blade.php ENDPATH**/ ?>
