@@ -1,0 +1,101 @@
+/* CSS Global */
+
+/* Font Global */
+.gudea-regular {
+  font-family: "Gudea", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gudea-bold {
+  font-family: "Gudea", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.gudea-regular-italic {
+  font-family: "Gudea", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+.rufina-regular {
+  font-family: "Rufina", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rufina-bold {
+  font-family: "Rufina", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+/* ===================================
+   GLOBAL TYPOGRAPHY (HEADINGS & TEXT)
+====================================== */
+
+/* Heading Utama */
+h1 {
+  font-family: "Gudea", sans-serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+
+/* Subjudul Section / Judul Halaman */
+h2 {
+  font-family: "Gudea", sans-serif;
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.75rem;
+}
+
+/* Judul Card / Judul Sedang */
+h3 {
+  font-family: "Gudea", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+/* Subjudul Kecil / Label Card */
+h4 {
+  font-family: "Gudea", sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+/* Label Kecil / Info Detail */
+h5 {
+  font-family: "Gudea", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.3;
+  margin-bottom: 0.4rem;
+}
+
+/* Paragraf umum */
+p {
+  font-family: "Gudea", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+/* Teks kecil */
+small {
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 40px; }
+  h2 { font-size: 28px; }
+  h3 { font-size: 22px; }
+  h4 { font-size: 18px; }
+  h5 { font-size: 16px; }
+  p  { font-size: 14px; }
+}
